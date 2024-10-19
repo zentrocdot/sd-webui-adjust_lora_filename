@@ -183,15 +183,15 @@ def change_tag(old_filename: str, new_filename: str, value: str) -> None:
     metadata.update({key1:temp_value})
     # Write the new file.
     return_code = write_metadata(old_filename, new_filename, metadata)
+    print("Return Code:", return_code)
     if return_code == 1:
         gr.Error("A serious ERROR has occurred!")
     else:    
         gr.Info("Operation successfully completed!")
-    # Print control data into the terminal window.
-    print(metadata)
-    print(os.path.getsize(old_filename))
-    print(os.path.getsize(new_filename))
-    gr.Info("Gotcha!")
+        # Print control data into the terminal window.
+        print(metadata)
+        print(os.path.getsize(old_filename))
+        print(os.path.getsize(new_filename))
     # Return None
     return None
 
