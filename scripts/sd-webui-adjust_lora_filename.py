@@ -165,7 +165,7 @@ def write_metadata(old_file_name: str, new_file_name: str, metadata: dict):
         return_code = 0        
     except Exception as e:
          # Print error.
-         print(e)
+         #print(e)
          # Set return code to 1 (error).    
          return_code = 1
     # Return the return code.    
@@ -190,7 +190,6 @@ def change_tag(old_filename: str, new_filename: str, value: str) -> None:
     metadata.update({key1:temp_value})
     # Write the new file.
     return_code = write_metadata(old_filename, new_filename, metadata)
-    print("Return Code:", return_code)
     if int(return_code) == 1:
         raise gr.Error("A serious ERROR has occurred!")
     else:    
