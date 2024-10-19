@@ -119,6 +119,26 @@ def read_metadata(file_name: str) -> dict:
     # Return the metadata as dict.
     return metadata
 
+from contextlib import contextmanager
+
+@contextmanager
+def opened_error(filename, mode="r"):
+    try:
+        f = open(filename, mode)
+    except IOError, err:
+        yield None, err
+    else:
+        try:
+            yield f, None
+        finally:
+            f.close()
+
+#with opened_w_error("/etc/passwd", "a") as (f, err):
+#    if err:
+#        print "IOError:", err
+#    else:
+#        f.write("guido::0:0::/:/bin/sh\n")
+
 # -------------------------
 # Function write_metadata()
 # -------------------------
@@ -132,7 +152,11 @@ def write_metadata(old_file_name: str, new_file_name: str, metadata: dict):
         metadata:      metadata as dict
     '''
     # Open a binary file for readonly reading.
-    with open(old_file_name, 'rb') as old_file:
+    #with open(old_file_name, 'rb') as old_file:
+    with opened_error(old_file_name, 'rb') as (old_file,err):
+      if err:
+        print "IOError:", err
+       else:      
         # Extract the header data and the header size from the given file.
         old_header_data = read_header_data(old_file)
         # Overwrite the metadata in the header.
