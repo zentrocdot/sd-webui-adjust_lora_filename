@@ -14,6 +14,7 @@ Version 0.0.0.1
 import os
 import json
 from typing import BinaryIO
+from pathlib import Path
 import gradio as gr
 import modules.sd_models as models
 import modules.shared
@@ -201,14 +202,10 @@ def on_ui_tabs():
             def change_sort_fw_bw(rb_state):
                 global _SortDir
                 _SortDir = False
-                #out_state = "Forward"
                 if rb_state == "Forward":
                     _SortDir = False
-                    #out_state = "Forward"
                 elif rb_state == "Backward":
                     _SortDir = True
-                    #out_state = "Backward"
-                #return [out_state]
                 return []
             sort_fw_bw.change(change_sort_fw_bw, inputs=[sort_fw_bw], outputs=[])            
         with gr.Row():
@@ -218,7 +215,9 @@ def on_ui_tabs():
             outputname = gr.Textbox(value="", lines=1, render=True,
                                     interactive=False, inputs=None, label="",
                                     info="Filename without extension from metadata")
-            def get_basename():
+            gr.Button(label="Adjust")
+            def get_basename(fn):
+                fn = Path(fn).stem
                 return fn
             def get_tagname():
                 return fn
