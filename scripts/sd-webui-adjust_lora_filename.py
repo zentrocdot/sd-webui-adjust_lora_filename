@@ -155,7 +155,7 @@ def write_metadata(old_file_name: str, new_file_name: str, metadata: dict):
     #with open(old_file_name, 'rb') as old_file:
     with opened_error(old_file_name, 'rb') as (old_file,err):
       if err:
-        print "IOError:", err
+        print("IOError:", err)
        else:      
         # Extract the header data and the header size from the given file.
         old_header_data = read_header_data(old_file)
