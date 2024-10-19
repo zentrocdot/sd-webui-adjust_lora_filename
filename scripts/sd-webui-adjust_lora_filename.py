@@ -226,7 +226,8 @@ def on_ui_tabs():
                 print(src_path)
                 filename, suffix = src_path, '.bak'
                 #dst_path = Path(BASE_PATH, src_path + ".bak") 
-                dst_path = filename + suffix
+                #dst_path = filename + suffix
+                dst_path = ''.join(src_path, ".bak")
                 print(dst_path)
                 shutil.copyfile(src_path, dst_path)
                 change_tag(dst_path, src_path, tag)
