@@ -272,7 +272,7 @@ def on_ui_tabs():
                 inputs=[input_file],
                 outputs=[json_output]
             )
-    return [(ui_component, "Adjust Lora Filename", "adjust_lora_filename_tab")]
+    return [(ui_component, "Adjust LoRA Filename", "adjust_lora_filename_tab")]
 
 # Invoke a callback function. 
 script_callbacks.on_ui_tabs(on_ui_tabs)
