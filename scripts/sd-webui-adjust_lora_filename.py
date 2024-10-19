@@ -131,7 +131,9 @@ def write_metadata(old_file_name: str, new_file_name: str, metadata: dict):
         new_file_name: name of the modified file
         metadata:      metadata as dict
     '''
+    # Initialise the return code.
     return_code = None
+    # Catch errors.
     try:
         # Open a binary file for readonly reading.  
         with open(old_file_name, 'rb') as old_file:
@@ -159,12 +161,12 @@ def write_metadata(old_file_name: str, new_file_name: str, metadata: dict):
                     new_file.write(chunk)
                     # Read the next new chunk data.
                     chunk = old_file.read(chunk_size)
+        # Set return code to 0 (success).            
         return_code = 0        
     except:
-        print("########################")
-        print("Error")
-        print("########################")
+         # Set return code to 1 (error).    
         return_code = 1
+    # Return the return code.    
     return return_code    
 
 # ---------------------
@@ -188,15 +190,13 @@ def change_tag(old_filename: str, new_filename: str, value: str) -> None:
     return_code = write_metadata(old_filename, new_filename, metadata)
     print("Return Code:", return_code)
     if int(return_code) == 1:
-        print("Return Code Inner:", return_code)
-        gr.Error("A serious ERROR has occurred!")
-        raise gr.Error("An error occurred 💥!")
+        raise gr.Error("A serious ERROR has occurred!")
     else:    
         gr.Info("Operation successfully completed!")
         # Print control data into the terminal window.
-        print(metadata)
-        print(os.path.getsize(old_filename))
-        print(os.path.getsize(new_filename))
+        print("New metadata:", metadata)
+        print("Old size:", os.path.getsize(old_filename))
+        print("Old size:", os.path.getsize(new_filename))
     # Return None
     return None
 
