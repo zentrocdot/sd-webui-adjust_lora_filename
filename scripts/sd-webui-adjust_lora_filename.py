@@ -222,6 +222,7 @@ def on_ui_tabs():
                                     info="Filename without extension from metadata")
             adjust_button = gr.Button(value="Adjust")
             def update_safetensors(src):
+                src_path = lora_dict.get(src)
                 dst = Path(BASE_PATH, src + ".bak") 
                 shutil.copyfile(src, dst)
                 return []
