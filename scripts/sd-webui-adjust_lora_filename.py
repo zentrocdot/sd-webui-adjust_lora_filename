@@ -192,7 +192,7 @@ def change_tag(old_filename: str, new_filename: str, value: str) -> None:
     return_code = write_metadata(old_filename, new_filename, metadata)
     if int(return_code) == 1:
         gr.Warning("A serious error has occurred!")
-      else:    
+    else:    
         gr.Info("Operation successfully completed!")
         # Print control data into the terminal window.
         print("New metadata:", metadata)
