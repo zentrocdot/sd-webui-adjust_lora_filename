@@ -190,7 +190,7 @@ def change_tag(old_filename: str, new_filename: str, value: str) -> None:
     if int(return_code) == 1:
         print("Return Code Inner:", return_code)
         gr.Error("A serious ERROR has occurred!")
-        raise gr.Error("An error occurred 💥!", duration=5)
+        raise gr.Error("An error occurred 💥!")
     else:    
         gr.Info("Operation successfully completed!")
         # Print control data into the terminal window.
