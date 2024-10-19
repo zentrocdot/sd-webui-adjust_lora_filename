@@ -215,7 +215,7 @@ def on_ui_tabs():
             outputname = gr.Textbox(value="", lines=1, render=True,
                                     interactive=False, inputs=None, label="",
                                     info="Filename without extension from metadata")
-            gr.Button(label="Adjust")
+            gr.Button(value="Adjust")
             def get_basename(fn):
                 fn = Path(fn).stem
                 return fn
