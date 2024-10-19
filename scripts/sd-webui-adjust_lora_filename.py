@@ -181,6 +181,7 @@ def change_tag(old_filename: str, new_filename: str, value: str) -> None:
     print(metadata)
     print(os.path.getsize(old_filename))
     print(os.path.getsize(new_filename))
+    gr.Info("Gotcha!")
     # Return None
     return None
 
