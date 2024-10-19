@@ -14,6 +14,7 @@ Version 0.0.0.1
 import os
 import json
 from typing import BinaryIO
+import io
 import shutil
 from pathlib import Path
 import modules.scripts as scripts
