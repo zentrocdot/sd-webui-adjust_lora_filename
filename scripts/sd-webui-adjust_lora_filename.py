@@ -232,9 +232,7 @@ def on_ui_tabs():
                 print(dst_path)
                 shutil.copyfile(src_path, dst_path)
                 change_tag(dst_path, src_path, tag)
-                return []
-            adjust_button.click(update_safetensors, inputs=[input_file], outputs=[])
-            
+                return []         
             def get_basename(fn):
                 fn = Path(fn).stem
                 return fn
@@ -245,6 +243,7 @@ def on_ui_tabs():
                 return data
             input_file.input(fn=get_basename, inputs=[input_file], outputs=[filename])
             input_file.input(fn=get_tagname, inputs=[input_file], outputs=[outputname])
+            adjust_button.click(update_safetensors, inputs=[input_file], outputs=[])  
             update_button.click(get_tagname, inputs=[input_file], outputs=[outputname])
         # Create a new row. 
         with gr.Row():
