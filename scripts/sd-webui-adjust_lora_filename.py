@@ -222,8 +222,11 @@ def on_ui_tabs():
                                     info="Filename without extension from metadata")
             adjust_button = gr.Button(value="Adjust")
             def update_safetensors(src):
+                print(src)
                 src_path = lora_dict.get(src)
+                print(src_path)
                 dst_path = Path(BASE_PATH, src_path + ".bak") 
+                print(dst_path)
                 shutil.copyfile(src_path, dst_path)
                 return []
             adjust_button.click(update_safetensors, inputs=[input_file], outputs=[])
@@ -231,7 +234,7 @@ def on_ui_tabs():
                 fn = Path(fn).stem
                 return fn
             def get_tagname(fn):
-                print(fn)
+                #print(fn)
                 metadata = read_metadata(lora_dict.get(fn))
                 data = metadata.get("ss_output_name")
                 return data
@@ -266,7 +269,7 @@ def get_lora_path(lora_file: str) -> str:
 # +++++++++++++++++++++++++++++
 def read_lora_metadata(input_file: str) -> json:
     '''Read the LoRA metadata.'''
-    print(get_lora_path(lora_dict.get(input_file)))
+    #print(get_lora_path(lora_dict.get(input_file)))
     if selected_model := get_lora_path(lora_dict.get(input_file)):
         if metadata := models.read_metadata_from_safetensors(selected_model):
             return json.dumps(metadata, indent=4, ensure_ascii=False)
