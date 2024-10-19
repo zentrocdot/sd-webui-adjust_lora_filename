@@ -167,7 +167,7 @@ def write_metadata(old_file_name: str, new_file_name: str, metadata: dict):
          # Print error.
          print(e)
          # Set return code to 1 (error).    
-        return_code = 1
+         return_code = 1
     # Return the return code.    
     return return_code    
 
