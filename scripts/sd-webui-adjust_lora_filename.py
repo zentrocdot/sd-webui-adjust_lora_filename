@@ -163,9 +163,9 @@ def write_metadata(old_file_name: str, new_file_name: str, metadata: dict):
                     chunk = old_file.read(chunk_size)
         # Set return code to 0 (success).            
         return_code = 0        
-    except Exception as e:
+    except Exception as err:
          # Print error.
-         #print(e)
+         print(err)
          # Set return code to 1 (error).    
          return_code = 1
     # Return the return code.    
@@ -190,14 +190,17 @@ def change_tag(old_filename: str, new_filename: str, value: str) -> None:
     metadata.update({key1:temp_value})
     # Write the new file.
     return_code = write_metadata(old_filename, new_filename, metadata)
-    if int(return_code) == 1:
+    try:
+      if int(return_code) == 1:
         raise gr.Error("A serious ERROR has occurred!")
-    else:    
+      else:    
         gr.Info("Operation successfully completed!")
         # Print control data into the terminal window.
         print("New metadata:", metadata)
         print("Old size:", os.path.getsize(old_filename))
         print("Old size:", os.path.getsize(new_filename))
+    except:
+      pass    
     # Return None
     return None
 
