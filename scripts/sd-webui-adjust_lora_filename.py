@@ -16,6 +16,7 @@ import json
 from typing import BinaryIO
 import shutil
 from pathlib import Path
+import modules.scripts as scripts
 import gradio as gr
 import modules.sd_models as models
 import modules.shared
