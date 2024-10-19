@@ -223,8 +223,8 @@ def on_ui_tabs():
             adjust_button = gr.Button(value="Adjust")
             def update_safetensors(src):
                 src_path = lora_dict.get(src)
-                dst = Path(BASE_PATH, src + ".bak") 
-                shutil.copyfile(src, dst)
+                dst_path = Path(BASE_PATH, src_path + ".bak") 
+                shutil.copyfile(src_path, dst_path)
                 return []
             adjust_button.click(update_safetensors, inputs=[input_file], outputs=[])
             def get_basename(fn):
