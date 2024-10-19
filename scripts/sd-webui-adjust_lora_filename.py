@@ -219,8 +219,10 @@ def on_ui_tabs():
             def get_basename(fn):
                 fn = Path(fn).stem
                 return fn
-            def get_tagname():
-                return fn
+            def get_tagname(fn):
+                metadata = read_metadata(fn)
+                data = metadata.get("ss_output_name")
+                return data
             input_file.input(fn=get_basename, inputs=[input_file], outputs=[filename])
             input_file.input(fn=get_tagname, inputs=[input_file], outputs=[outputname])
         # Create a new row. 
