@@ -225,19 +225,21 @@ def on_ui_tabs():
                 shutil.copyfile(src_path, dst_path)
                 change_tag(dst_path, src_path, tag)
                 return []         
-            #def get_basename(fn):
-            #    fn = Path(fn).stem
-            #    return fn
-            def get_tagname(fn):
-                bn = Path(fn).stem
-                metadata = read_metadata(lora_dict.get(fn))
-                data = metadata.get("ss_output_name")
-                return [bn, data]
-            #input_file.input(fn=get_basename, inputs=[input_file], outputs=[filename])
-            #input_file.input(fn=get_tagname, inputs=[input_file], outputs=[outputname])
-            input_file.input(fn=get_tagname, inputs=[input_file], outputs=[filename, outputname])
-            adjust_button.click(update_safetensors, inputs=[input_file], outputs=[])  
-            update_button.click(get_tagname, inputs=[input_file], outputs=[outputname])
+            def get_file_tag_name(fn):
+                tag = "ss_output_name"
+                basename = Path(fn).stem
+                fp = lora_dict.get(fn)
+                metadata = read_metadata(fp)
+                outputname = metadata.get(tag)
+                return [basename, outputname]
+            input_file.input(fn=get_file_tag_name,
+                             inputs=[input_file],
+                             outputs=[filename, outputname])
+            adjust_button.click(update_safetensors, inputs=[input_file], outputs=[])
+            def get_tag(fn):
+                tag = Path(fn).stem
+                return tag
+            update_button.click(get_tag, inputs=[input_file], outputs=[outputname])
         # Create a new row. 
         with gr.Row():
             json_output = gr.Code(lines=10, label="Metadata as JSON", language="json")
