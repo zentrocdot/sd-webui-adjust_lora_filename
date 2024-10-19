@@ -215,10 +215,10 @@ def on_ui_tabs():
             sort_fw_bw.change(change_sort_fw_bw, inputs=[sort_fw_bw], outputs=[])            
         with gr.Row():
             filename = gr.Textbox(value="", lines=1, render=True,
-                                  interactive=False, inputs=None, label="",
+                                  interactive=False, inputs=None, info="",
                                   label="Selected filename without extension")
             outputname = gr.Textbox(value="", lines=1, render=True,
-                                    interactive=False, inputs=None, label="",
+                                    interactive=False, inputs=None, info="",
                                     label="Filename without extension from metadata")
             adjust_button = gr.Button(value="Adjust")
             update_button = gr.Button(value="Update")
