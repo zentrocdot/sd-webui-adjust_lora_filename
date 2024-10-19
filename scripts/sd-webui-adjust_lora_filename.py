@@ -224,6 +224,7 @@ def on_ui_tabs():
             update_button = gr.Button(value="Update")
             def update_safetensors(src):
                 tag = Path(src).stem
+                print(BASE_PATH)
                 print(src)
                 src_path = lora_dict.get(src)
                 print(src_path)
@@ -277,7 +278,6 @@ def get_lora_path(lora_file: str) -> str:
 # +++++++++++++++++++++++++++++
 def read_lora_metadata(input_file: str) -> json:
     '''Read the LoRA metadata.'''
-    #print(get_lora_path(lora_dict.get(input_file)))
     if selected_model := get_lora_path(lora_dict.get(input_file)):
         if metadata := models.read_metadata_from_safetensors(selected_model):
             return json.dumps(metadata, indent=4, ensure_ascii=False)
