@@ -13,6 +13,7 @@ Version 0.0.0.1
 # Import the Python modules.
 import os
 import json
+from typing import BinaryIO
 import gradio as gr
 import modules.sd_models as models
 import modules.shared
