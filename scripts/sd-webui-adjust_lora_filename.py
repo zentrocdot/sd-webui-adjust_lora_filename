@@ -228,14 +228,14 @@ def on_ui_tabs():
                                     label="Filename without extension from metadata")
             adjust_button = gr.Button(value="Adjust")
             update_button = gr.Button(value="Update")
-            def update_safetensors(src):
+            def adjust_safetensors(src):
                 tag = Path(src).stem
                 src_path = lora_dict.get(src)
                 dst_path = ''.join([src_path, ".bak"])
                 shutil.copyfile(src_path, dst_path)
                 change_tag(dst_path, src_path, tag)
                 return []    
-            adjust_button.click(update_safetensors, inputs=[input_file], outputs=[])            
+            adjust_button.click(adjust_safetensors, inputs=[input_file], outputs=[])            
         # Create a new row. 
         with gr.Row():
             json_output = gr.Code(lines=10, label="Metadata as JSON", language="json")
