@@ -17,7 +17,6 @@ from typing import BinaryIO
 import io
 import shutil
 from pathlib import Path
-#import modules.scripts as scripts
 import gradio as gr
 import modules.sd_models as models
 import modules.shared
@@ -32,9 +31,6 @@ lora_dict = {}
 
 # Set private variable.
 _SortDir = False
-
-# Get the base path.
-#BASE_PATH = scripts.basedir()
 
 # ********************
 # Function lora_scan()
@@ -224,13 +220,13 @@ def on_ui_tabs():
             update_button = gr.Button(value="Update")
             def update_safetensors(src):
                 tag = Path(src).stem
-                #print(BASE_PATH)
                 print(src)
+                print(tag)
                 src_path = lora_dict.get(src)
                 print(src_path)
                 filename, suffix = src_path, '.bak'
                 #dst_path = Path(BASE_PATH, src_path + ".bak") 
-                dst_path = Path(filename).with_suffix(suffix)
+                dst_path = filename + suffix
                 print(dst_path)
                 shutil.copyfile(src_path, dst_path)
                 change_tag(dst_path, src_path, tag)
