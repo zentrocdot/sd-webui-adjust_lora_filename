@@ -119,26 +119,6 @@ def read_metadata(file_name: str) -> dict:
     # Return the metadata as dict.
     return metadata
 
-from contextlib import contextmanager
-
-@contextmanager
-def opened_error(filename, mode="r"):
-    try:
-        f = open(filename, mode)
-    except (IOError, err):
-        yield None, err
-    else:
-        try:
-            yield f, None
-        finally:
-            f.close()
-
-#with opened_w_error("/etc/passwd", "a") as (f, err):
-#    if err:
-#        print "IOError:", err
-#    else:
-#        f.write("guido::0:0::/:/bin/sh\n")
-
 # -------------------------
 # Function write_metadata()
 # -------------------------
@@ -151,40 +131,38 @@ def write_metadata(old_file_name: str, new_file_name: str, metadata: dict):
         new_file_name: name of the modified file
         metadata:      metadata as dict
     '''
-    # Open a binary file for readonly reading.
+    return_code = None
     try:
-      with open(old_file_name, 'rb') as old_file:
-      #try 
-      #with opened_error(old_file_name, 'rb') as (old_file,err):
-      #if err:
-      #  print("IOError:", err)
-      #else:      
-        # Extract the header data and the header size from the given file.
-        old_header_data = read_header_data(old_file)
-        # Overwrite the metadata in the header.
-        old_header_data['__metadata__'] = metadata
-        # Convert modified header data back to a binary string.
-        new_header_data = json.dumps(old_header_data, separators=(',', ':')).encode('utf-8')
-        # Open a new file for writing.
-        with open(new_file_name, 'wb') as new_file:
-            # Calculate the new offset value.
-            offset = len(new_header_data)
-            # Write the new offset value into the file.
-            new_file.write(offset.to_bytes(8, 'little'))
-            # Write the new header data into file.
-            new_file.write(new_header_data)
-            # Calculate chunk size based on buffer size for wrtiting the tensor to file.
-            chunk_size = io.DEFAULT_BUFFER_SIZE
-            # Read first chunk data for writing.
-            chunk = old_file.read(chunk_size)
-            # Write chunk data to file as long there is data.
-            while chunk:
-                # Write chunk data to the file.
-                new_file.write(chunk)
-                # Read the next new chunk data.
+        # Open a binary file for readonly reading.  
+        with open(old_file_name, 'rb') as old_file:
+            # Extract the header data and the header size from the given file.
+            old_header_data = read_header_data(old_file)
+            # Overwrite the metadata in the header.
+            old_header_data['__metadata__'] = metadata
+            # Convert modified header data back to a binary string.
+            new_header_data = json.dumps(old_header_data, separators=(',', ':')).encode('utf-8')
+            # Open a new file for writing.
+            with open(new_file_name, 'wb') as new_file:
+                # Calculate the new offset value.
+                offset = len(new_header_data)
+                # Write the new offset value into the file.
+                new_file.write(offset.to_bytes(8, 'little'))
+                # Write the new header data into file.
+                new_file.write(new_header_data)
+                # Calculate chunk size based on buffer size for wrtiting the tensor to file.
+                chunk_size = io.DEFAULT_BUFFER_SIZE
+                # Read first chunk data for writing.
                 chunk = old_file.read(chunk_size)
+                # Write chunk data to file as long there is data.
+                while chunk:
+                    # Write chunk data to the file.
+                    new_file.write(chunk)
+                    # Read the next new chunk data.
+                    chunk = old_file.read(chunk_size)
+        return_code = 0        
     except:
-      print("ERROR!!!!!!!!!!!!!!!!!!!!!!")
+        return_code = 1
+    return return_code    
 
 # ---------------------
 # Function change_tag()
@@ -204,7 +182,11 @@ def change_tag(old_filename: str, new_filename: str, value: str) -> None:
     # Update one entry in the metadata.
     metadata.update({key1:temp_value})
     # Write the new file.
-    write_metadata(old_filename, new_filename, metadata)
+    return_code = write_metadata(old_filename, new_filename, metadata)
+    if return_code == 1:
+        gr.Error("A serious ERROR has occurred!")
+    else    
+        gr.Info("Operation successfully completed!")
     # Print control data into the terminal window.
     print(metadata)
     print(os.path.getsize(old_filename))
