@@ -236,10 +236,8 @@ def on_ui_tabs():
                              inputs=[input_file],
                              outputs=[filename, outputname])
             adjust_button.click(update_safetensors, inputs=[input_file], outputs=[])
-            def get_tag(fn):
-                tag = Path(fn).stem
-                return tag
-            update_button.click(get_tag, inputs=[input_file], outputs=[outputname])
+
+            
         # Create a new row. 
         with gr.Row():
             json_output = gr.Code(lines=10, label="Metadata as JSON", language="json")
@@ -247,6 +245,18 @@ def on_ui_tabs():
                 fn=read_lora_metadata,
                 inputs=[input_file],
                 outputs=[json_output]
+            )
+            def get_tag(fn):
+                tag = "ss_output_name"
+                basename = Path(fn).stem
+                fp = lora_dict.get(fn)
+                metadata = read_metadata(fp)
+                outputname = metadata.get(tag)
+                return [basename, outputname]
+            update_button.click(
+                get_tag,
+                inputs=[input_file],
+                outputs=[filename, outputname]
             )
             update_button.click(
                 read_lora_metadata,
