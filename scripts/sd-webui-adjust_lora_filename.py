@@ -163,7 +163,9 @@ def write_metadata(old_file_name: str, new_file_name: str, metadata: dict):
                     chunk = old_file.read(chunk_size)
         # Set return code to 0 (success).            
         return_code = 0        
-    except:
+    except Exception as e:
+         # Print error.
+         print(e)
          # Set return code to 1 (error).    
         return_code = 1
     # Return the return code.    
