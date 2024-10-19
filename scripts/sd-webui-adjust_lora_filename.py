@@ -222,6 +222,7 @@ def on_ui_tabs():
                                     interactive=False, inputs=None, label="",
                                     info="Filename without extension from metadata")
             adjust_button = gr.Button(value="Adjust")
+            update_button = gr.Button(value="Update")
             def update_safetensors(src):
                 tag = Path(src).stem
                 print(src)
@@ -233,6 +234,8 @@ def on_ui_tabs():
                 change_tag(dst_path, src_path, tag)
                 return []
             adjust_button.click(update_safetensors, inputs=[input_file], outputs=[])
+            update_button.click(read_lora_metadata, inputs=[input_file], outputs=[json_output])
+            update_button.click(get_tagname, inputs=[input_file], outputs=[outputname])
             def get_basename(fn):
                 fn = Path(fn).stem
                 return fn
