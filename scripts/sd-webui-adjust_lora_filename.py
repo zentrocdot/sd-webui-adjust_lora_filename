@@ -209,16 +209,17 @@ def on_ui_tabs():
                     #out_state = "Backward"
                 #return [out_state]
                 return []
-            sort_fw_bw.change(change_sort_fw_bw, inputs=[sort_fw_bw], outputs=[])
+            sort_fw_bw.change(change_sort_fw_bw, inputs=[sort_fw_bw], outputs=[])            
         with gr.Row():
-            arvalue = gr.Textbox(value="", lines=1, render=True,
-                        interactive=False, inputs=None, label="",
-                        info="Selected filename without extension"
-                    )
-            arvalue = gr.Textbox(value="", lines=1, render=True,
-                        interactive=False, inputs=None, label="",
-                        info="Filename without extension from metadata"
-                    )
+            filename = gr.Textbox(value="", lines=1, render=True,
+                                  interactive=False, inputs=None, label="",
+                                  info="Selected filename without extension")
+            outputname = gr.Textbox(value="", lines=1, render=True,
+                                    interactive=False, inputs=None, label="",
+                                    info="Filename without extension from metadata")
+            input_file.input(fn=read_lora_metadata, inputs=[input_file], outputs=[filename]
+            input_file.input(fn=read_lora_metadata, inputs=[input_file], outputs=[outputname]
+            )
         # Create a new row. 
         with gr.Row():
             json_output = gr.Code(lines=10, label="Metadata as JSON", language="json")
