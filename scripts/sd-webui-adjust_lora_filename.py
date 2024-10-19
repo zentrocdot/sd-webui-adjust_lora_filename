@@ -176,14 +176,13 @@ def change_tag(old_filename: str, new_filename: str, value: str) -> None:
     metadata.update({key0: value})
     # Get the value for key ss_tag_frequency.
     temp_value = metadata.get(key1)
-    #temp_value = json.dumps(temp_value, separators=(',', ':'))
     temp_value = json.dumps(temp_value)
     # Update one entry in the metadata.
     metadata.update({key1:temp_value})
-    print(metadata)
     # Write the new file.
     write_metadata(old_filename, new_filename, metadata)
-    # Check if both files have the same size.
+    # Print control data into the terminal window.
+    print(metadata)
     print(os.path.getsize(old_filename))
     print(os.path.getsize(new_filename))
     # Return None
@@ -217,10 +216,10 @@ def on_ui_tabs():
         with gr.Row():
             filename = gr.Textbox(value="", lines=1, render=True,
                                   interactive=False, inputs=None, label="",
-                                  info="Selected filename without extension")
+                                  label="Selected filename without extension")
             outputname = gr.Textbox(value="", lines=1, render=True,
                                     interactive=False, inputs=None, label="",
-                                    info="Filename without extension from metadata")
+                                    label="Filename without extension from metadata")
             adjust_button = gr.Button(value="Adjust")
             update_button = gr.Button(value="Update")
             def update_safetensors(src):
@@ -237,7 +236,6 @@ def on_ui_tabs():
                 fn = Path(fn).stem
                 return fn
             def get_tagname(fn):
-                #print(fn)
                 metadata = read_metadata(lora_dict.get(fn))
                 data = metadata.get("ss_output_name")
                 return data
@@ -253,7 +251,11 @@ def on_ui_tabs():
                 inputs=[input_file],
                 outputs=[json_output]
             )
-            update_button.click(read_lora_metadata, inputs=[input_file], outputs=[json_output])
+            update_button.click(
+                read_lora_metadata,
+                inputs=[input_file],
+                outputs=[json_output]
+            )
     return [(ui_component, "Adjust Lora Filename", "adjust_lora_filename_tab")]
 
 # Invoke a callback function. 
