@@ -152,11 +152,13 @@ def write_metadata(old_file_name: str, new_file_name: str, metadata: dict):
         metadata:      metadata as dict
     '''
     # Open a binary file for readonly reading.
-    #with open(old_file_name, 'rb') as old_file:
-    with opened_error(old_file_name, 'rb') as (old_file,err):
-      if err:
-        print("IOError:", err)
-      else:      
+    try:
+      with open(old_file_name, 'rb') as old_file:
+      #try 
+      #with opened_error(old_file_name, 'rb') as (old_file,err):
+      #if err:
+      #  print("IOError:", err)
+      #else:      
         # Extract the header data and the header size from the given file.
         old_header_data = read_header_data(old_file)
         # Overwrite the metadata in the header.
@@ -181,6 +183,8 @@ def write_metadata(old_file_name: str, new_file_name: str, metadata: dict):
                 new_file.write(chunk)
                 # Read the next new chunk data.
                 chunk = old_file.read(chunk_size)
+    except:
+      print("ERROR!!!!!!!!!!!!!!!!!!!!!!")
 
 # ---------------------
 # Function change_tag()
