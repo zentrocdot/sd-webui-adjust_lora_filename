@@ -125,7 +125,7 @@ from contextlib import contextmanager
 def opened_error(filename, mode="r"):
     try:
         f = open(filename, mode)
-    except IOError, err:
+    except (IOError, err):
         yield None, err
     else:
         try:
