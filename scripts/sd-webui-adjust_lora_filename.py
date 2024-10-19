@@ -62,17 +62,6 @@ def on_ui_tabs():
         # Create a new row. 
         with gr.Row():
             input_file = gr.Dropdown(choices=get_lora_list(), label="LoRA File List")
-        with gr.Row():
-            arvalue = gr.Textbox(value="", lines=1, render=True,
-                        interactive=False, inputs=None, label="",
-                        info="Selected filename without extension"
-                    )
-        with gr.Row():
-            arvalue = gr.Textbox(value="", lines=1, render=True,
-                        interactive=False, inputs=None, label="",
-                        info="Filename without extension from metadata"
-                    )
-          
             create_refresh_button(input_file, get_lora_list,
                                   lambda: {"choices": get_lora_list()},
                                   "metadata_utils_refresh_1")
@@ -92,6 +81,16 @@ def on_ui_tabs():
                 #return [out_state]
                 return []
             sort_fw_bw.change(change_sort_fw_bw, inputs=[sort_fw_bw], outputs=[])
+        with gr.Row():
+            arvalue = gr.Textbox(value="", lines=1, render=True,
+                        interactive=False, inputs=None, label="",
+                        info="Selected filename without extension"
+                    )
+        with gr.Row():
+            arvalue = gr.Textbox(value="", lines=1, render=True,
+                        interactive=False, inputs=None, label="",
+                        info="Filename without extension from metadata"
+                    )
         # Create a new row. 
         with gr.Row():
             json_output = gr.Code(lines=10, label="Metadata as JSON", language="json")
@@ -100,7 +99,7 @@ def on_ui_tabs():
                 inputs=[input_file],
                 outputs=[json_output]
             )
-    return [(ui_component, "LoRA Metadata Viewer", "metadata_viewer_tab")]
+    return [(ui_component, "Adjust Lora Filename", "adjust_lora_filename_tab")]
 
 # Invoke a callback function. 
 script_callbacks.on_ui_tabs(on_ui_tabs)
