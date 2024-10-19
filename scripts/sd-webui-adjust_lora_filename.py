@@ -234,7 +234,6 @@ def on_ui_tabs():
                 change_tag(dst_path, src_path, tag)
                 return []
             adjust_button.click(update_safetensors, inputs=[input_file], outputs=[])
-            update_button.click(read_lora_metadata, inputs=[input_file], outputs=[json_output])
             update_button.click(get_tagname, inputs=[input_file], outputs=[outputname])
             def get_basename(fn):
                 fn = Path(fn).stem
@@ -254,6 +253,7 @@ def on_ui_tabs():
                 inputs=[input_file],
                 outputs=[json_output]
             )
+            update_button.click(read_lora_metadata, inputs=[input_file], outputs=[json_output])
     return [(ui_component, "Adjust Lora Filename", "adjust_lora_filename_tab")]
 
 # Invoke a callback function. 
