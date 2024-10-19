@@ -220,27 +220,22 @@ def on_ui_tabs():
             update_button = gr.Button(value="Update")
             def update_safetensors(src):
                 tag = Path(src).stem
-                print(src)
-                print(tag)
                 src_path = lora_dict.get(src)
-                print(src_path)
-                filename, suffix = src_path, '.bak'
-                #dst_path = Path(BASE_PATH, src_path + ".bak") 
-                #dst_path = filename + suffix
                 dst_path = ''.join([src_path, ".bak"])
-                print(dst_path)
                 shutil.copyfile(src_path, dst_path)
                 change_tag(dst_path, src_path, tag)
                 return []         
-            def get_basename(fn):
-                fn = Path(fn).stem
-                return fn
+            #def get_basename(fn):
+            #    fn = Path(fn).stem
+            #    return fn
             def get_tagname(fn):
+                bn = Path(fn).stem
                 metadata = read_metadata(lora_dict.get(fn))
                 data = metadata.get("ss_output_name")
-                return data
-            input_file.input(fn=get_basename, inputs=[input_file], outputs=[filename])
-            input_file.input(fn=get_tagname, inputs=[input_file], outputs=[outputname])
+                return [bn, data]
+            #input_file.input(fn=get_basename, inputs=[input_file], outputs=[filename])
+            #input_file.input(fn=get_tagname, inputs=[input_file], outputs=[outputname])
+            input_file.input(fn=get_tagname, inputs=[input_file], outputs=[filename, outputname])
             adjust_button.click(update_safetensors, inputs=[input_file], outputs=[])  
             update_button.click(get_tagname, inputs=[input_file], outputs=[outputname])
         # Create a new row. 
