@@ -189,6 +189,13 @@ def change_tag(old_filename: str, new_filename: str, value: str) -> None:
 # +++++++++++++++++++++
 def on_ui_tabs():
     '''Method on_ui_tabs()'''
+    def get_file_tag_name(fn):
+        tag = "ss_output_name"
+        basename = Path(fn).stem
+        fp = lora_dict.get(fn)
+        metadata = read_metadata(fp)
+        outputname = metadata.get(tag)
+        return [basename, outputname]
     # Create a new block.
     with gr.Blocks(analytics_enabled=False) as ui_component:    
         # Create a new row. 
@@ -200,6 +207,9 @@ def on_ui_tabs():
             sort_fw_bw = gr.Radio(choices=["Forward", "Backward"], value="Forward", 
                                   label="Sorting Direction", info="",
                                   scale=2, min_width=50)
+            input_file.input(fn=get_file_tag_name,
+                             inputs=[input_file],
+                             outputs=[filename, outputname])
             def change_sort_fw_bw(rb_state):
                 global _SortDir
                 _SortDir = False
@@ -208,7 +218,7 @@ def on_ui_tabs():
                 elif rb_state == "Backward":
                     _SortDir = True
                 return []
-            sort_fw_bw.change(change_sort_fw_bw, inputs=[sort_fw_bw], outputs=[])            
+            sort_fw_bw.change(change_sort_fw_bw, inputs=[sort_fw_bw], outputs=[])    
         with gr.Row():
             filename = gr.Textbox(value="", lines=1, render=True,
                                   interactive=False, inputs=None, info="",
@@ -224,20 +234,8 @@ def on_ui_tabs():
                 dst_path = ''.join([src_path, ".bak"])
                 shutil.copyfile(src_path, dst_path)
                 change_tag(dst_path, src_path, tag)
-                return []         
-            def get_file_tag_name(fn):
-                tag = "ss_output_name"
-                basename = Path(fn).stem
-                fp = lora_dict.get(fn)
-                metadata = read_metadata(fp)
-                outputname = metadata.get(tag)
-                return [basename, outputname]
-            input_file.input(fn=get_file_tag_name,
-                             inputs=[input_file],
-                             outputs=[filename, outputname])
-            adjust_button.click(update_safetensors, inputs=[input_file], outputs=[])
-
-            
+                return []    
+            adjust_button.click(update_safetensors, inputs=[input_file], outputs=[])            
         # Create a new row. 
         with gr.Row():
             json_output = gr.Code(lines=10, label="Metadata as JSON", language="json")
@@ -246,15 +244,8 @@ def on_ui_tabs():
                 inputs=[input_file],
                 outputs=[json_output]
             )
-            def get_tag(fn):
-                tag = "ss_output_name"
-                basename = Path(fn).stem
-                fp = lora_dict.get(fn)
-                metadata = read_metadata(fp)
-                outputname = metadata.get(tag)
-                return [basename, outputname]
             update_button.click(
-                get_tag,
+                get_file_tag_name,
                 inputs=[input_file],
                 outputs=[filename, outputname]
             )
