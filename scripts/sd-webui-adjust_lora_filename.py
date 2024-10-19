@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-'''sd-webui-lora_metadata_viewer
+'''sd-webui-adjust_lora_filename
 Extension for AUTOMATIC1111.
 
 Version 0.0.0.1
@@ -14,6 +14,7 @@ Version 0.0.0.1
 import os
 import json
 from typing import BinaryIO
+import shutil
 from pathlib import Path
 import gradio as gr
 import modules.sd_models as models
@@ -30,9 +31,12 @@ lora_dict = {}
 # Set private variable.
 _SortDir = False
 
-# --------------------
+# Get the base path.
+BASE_PATH = scripts.basedir()
+
+# ********************
 # Function lora_scan()
-# --------------------
+# ********************
 def lora_scan(lora_dir: str, ext: list) -> (list, list):
     '''File scan for LoRA models.'''
     global lora_dict
@@ -49,9 +53,9 @@ def lora_scan(lora_dir: str, ext: list) -> (list, list):
         files.extend(fn)
     return subdirs, files
 
-# ------------------------
+# ************************
 # Function get_lora_list()
-# ------------------------
+# ************************
 def get_lora_list() -> list:
     '''Simple function for use with components.'''
     lora_list = []
@@ -215,7 +219,12 @@ def on_ui_tabs():
             outputname = gr.Textbox(value="", lines=1, render=True,
                                     interactive=False, inputs=None, label="",
                                     info="Filename without extension from metadata")
-            gr.Button(value="Adjust")
+            adjust_button = gr.Button(value="Adjust")
+            def update_safetensors(src):
+                dst = Path(BASE_PATH, src + ".bak") 
+                shutil.copyfile(src, dst)
+                return []
+            adjust_button.click(update_safetensors, inputs=[input_file], outputs=[])
             def get_basename(fn):
                 fn = Path(fn).stem
                 return fn
