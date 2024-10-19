@@ -220,7 +220,7 @@ def on_ui_tabs():
                 fn = Path(fn).stem
                 return fn
             def get_tagname(fn):
-                metadata = read_metadata(fn)
+                metadata = read_metadata(lora_dict.get(input_file))
                 data = metadata.get("ss_output_name")
                 return data
             input_file.input(fn=get_basename, inputs=[input_file], outputs=[filename])
