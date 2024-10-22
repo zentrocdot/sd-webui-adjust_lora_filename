@@ -2,7 +2,7 @@
 '''sd-webui-adjust_lora_filename
 Extension for AUTOMATIC1111.
 
-Version 0.0.0.1
+Version 0.0.0.2
 '''
 # pylint: disable=invalid-name
 # pylint: disable=import-error
