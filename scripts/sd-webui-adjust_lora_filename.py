@@ -9,6 +9,7 @@ Version 0.0.0.2
 # pylint: disable=trailing-whitespace
 # pylint: disable=line-too-long
 # pylint: disable=no-member
+# pylint: disable=bare-except
 
 # Import the Python modules.
 import os
@@ -166,10 +167,10 @@ def write_metadata(old_file_name: str, new_file_name: str, metadata: dict):
         # Set return code to 0 (success).            
         return_code = 0        
     except Exception as err:
-         # Print error.
-         print(err)
-         # Set return code to 1 (error).    
-         return_code = 1
+        # Print error.
+        print(err)
+        # Set return code to 1 (error).    
+        return_code = 1
     # Return the return code.    
     return return_code    
 
