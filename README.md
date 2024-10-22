@@ -15,6 +15,13 @@ One can select a LoRA file from a dropdown menu. Sorting is possible in alphabet
 
 <a target="_blank" href=""><img src="./images/adjust_fn.png" alt="button panel"></a>
 
+## Installation
+
+The installation link is
+
+https://github.com/zentrocdot/sd-webui-adjust_lora_filename
+
+
 ## Know Problem
 
 <p align="justify">If a LoRA model is renamed on the harddisk, while AUTOMATIC1111 is running, old a new filename in the drop-down list. This has to be checked and corrected.</p>
