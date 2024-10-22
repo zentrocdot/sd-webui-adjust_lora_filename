@@ -6,11 +6,14 @@ Version 0.0.0.2
 '''
 # pylint: disable=invalid-name
 # pylint: disable=import-error
-# pylint: disable=trailing-whitespace
 # pylint: disable=line-too-long
 # pylint: disable=no-member
 # pylint: disable=bare-except
 # pylint: disable=broad-except
+# pylint: disable=global-statement
+# pylint: disable=global-variable-not-assigned
+# pylint: disable=inconsistent-return-statements
+# pylint: disable=useless-return
 
 # Import the Python modules.
 import os
@@ -165,14 +168,14 @@ def write_metadata(old_file_name: str, new_file_name: str, metadata: dict):
                     new_file.write(chunk)
                     # Read the next new chunk data.
                     chunk = old_file.read(chunk_size)
-        # Set return code to 0 (success).            
-        return_code = 0        
+        # Set return code to 0 (success).
+        return_code = 0
     except Exception as err:
         # Print error.
         print(err)
-        # Set return code to 1 (error).    
+        # Set return code to 1 (error).
         return_code = 1
-    # Return the return code.    
+    # Return the return code.
     return return_code
 
 # ---------------------
@@ -196,12 +199,12 @@ def change_tag(old_filename: str, new_filename: str, value: str) -> None:
     return_code = write_metadata(old_filename, new_filename, metadata)
     if int(return_code) == 1:
         gr.Warning("A serious error has occurred!")
-    else:    
+    else:
         gr.Info("Operation successfully completed!")
         # Print control data into the terminal window.
         print("New metadata:", metadata)
         print("Old size:", os.path.getsize(old_filename))
-        print("Old size:", os.path.getsize(new_filename))  
+        print("Old size:", os.path.getsize(new_filename))
     # Return None
     return None
 
@@ -218,14 +221,14 @@ def on_ui_tabs():
         outputname = metadata.get(tag)
         return [basename, outputname]
     # Create a new block.
-    with gr.Blocks(analytics_enabled=False) as ui_component:    
-        # Create a new row. 
+    with gr.Blocks(analytics_enabled=False) as ui_component:
+        # Create a new row.
         with gr.Row():
             input_file = gr.Dropdown(choices=get_lora_list(), label="LoRA File List")
             create_refresh_button(input_file, get_lora_list,
                                   lambda: {"choices": get_lora_list()},
                                   "metadata_utils_refresh_1")
-            sort_fw_bw = gr.Radio(choices=["Forward", "Backward"], value="Forward", 
+            sort_fw_bw = gr.Radio(choices=["Forward", "Backward"], value="Forward",
                                   label="Sorting Direction", info="",
                                   scale=2, min_width=50)
             def change_sort_fw_bw(rb_state):
@@ -236,7 +239,7 @@ def on_ui_tabs():
                 elif rb_state == "Backward":
                     _SortDir = True
                 return []
-            sort_fw_bw.change(change_sort_fw_bw, inputs=[sort_fw_bw], outputs=[])    
+            sort_fw_bw.change(change_sort_fw_bw, inputs=[sort_fw_bw], outputs=[])
         with gr.Row():
             filename = gr.Textbox(value="", lines=1, render=True,
                                   interactive=False, inputs=None, info="",
@@ -255,9 +258,9 @@ def on_ui_tabs():
                 dst_path = ''.join([src_path, ".bak"])
                 shutil.copyfile(src_path, dst_path)
                 change_tag(dst_path, src_path, tag)
-                return []    
+                return []
             adjust_button.click(adjust_safetensors, inputs=[input_file], outputs=[])
-        # Create a new row. 
+        # Create a new row.
         with gr.Row():
             json_output = gr.Code(lines=10, label="Metadata as JSON", language="json")
             input_file.input(
@@ -277,7 +280,7 @@ def on_ui_tabs():
             )
     return [(ui_component, "Adjust LoRA Filename", "adjust_lora_filename_tab")]
 
-# Invoke a callback function. 
+# Invoke a callback function.
 script_callbacks.on_ui_tabs(on_ui_tabs)
 
 # ++++++++++++++++++++++++
