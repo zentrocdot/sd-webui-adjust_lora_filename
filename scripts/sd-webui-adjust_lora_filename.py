@@ -31,7 +31,7 @@ from modules import script_callbacks
 # Get LoRA path.
 LORA_PATH = getattr(modules.shared.cmd_opts, "lora_dir", os.path.join(models.paths.models_path, "Lora"))
 
-# Create dictionary.
+# Create a global dictionary.
 lora_dict = {}
 
 # Set private variable.
