@@ -13,9 +13,9 @@ Version 0.0.0.1
 # Import the Python modules.
 import os
 import json
-from typing import BinaryIO
 import io
 import shutil
+from typing import BinaryIO
 from pathlib import Path
 import gradio as gr
 import modules.sd_models as models
@@ -56,6 +56,8 @@ def lora_scan(lora_dir: str, ext: list) -> (list, list):
 # ************************
 def get_lora_list() -> list:
     '''Simple function for use with components.'''
+    global lora_dict
+    lora_dict = {}
     lora_list = []
     lora_scan(LORA_PATH, [".safetensors"])
     lora_list = list(lora_dict.keys())
