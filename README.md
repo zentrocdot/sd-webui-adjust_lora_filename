@@ -11,9 +11,7 @@ to-do ...
 
 ## What the Extension Does
 
-
-
-to-do ...
+<a target="_blank" href=""><img src="./images/adjust_fn.png" alt="button panel"></a>
 
 ## Know Problem
 
