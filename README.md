@@ -29,7 +29,7 @@ https://github.com/zentrocdot/sd-webui-adjust_lora_filename
 
 ## Know Problem
 
-<p align="justify">If a LoRA model is renamed on the harddisk, while AUTOMATIC1111 is running, old a new filename in the drop-down list. This has to be checked and corrected.</p>
+<p align="justify">No problems known yet.</p>
 
 # Reference
 
