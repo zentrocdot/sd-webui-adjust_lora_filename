@@ -11,7 +11,7 @@
 
 ## Background
 
-<p align="justify">A <code>.safetensors</code> files consist of a <i>header</i> and a binary part with the tensors. In the <i>header</i> there may be most of the time <i>metadata</i>. One tag of these metadata specifies the output filename. If the filename is not changed the output filename is equal to the filename.</p>
+<p align="justify">A <code>.safetensors</code> files consist of a <i>header</i> and a binary part with the tensors. In the <i>header</i> there may be most of the time <i>metadata</i>. One tag of these <i>metadata</i> specifies the output name. If the filename is not changed the output filename is equal to the filename.</p>
 
 ## What the Extension Does
 
