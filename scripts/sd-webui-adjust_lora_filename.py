@@ -10,6 +10,7 @@ Version 0.0.0.2
 # pylint: disable=line-too-long
 # pylint: disable=no-member
 # pylint: disable=bare-except
+# pylint: disable=broad-except
 
 # Import the Python modules.
 import os
