@@ -138,7 +138,7 @@ def write_metadata(old_file_name: str, new_file_name: str, metadata: dict):
     return_code = None
     # Catch errors.
     try:
-        # Open a binary file for readonly reading.  
+        # Open a binary file for readonly reading.
         with open(old_file_name, 'rb') as old_file:
             # Extract the header data and the header size from the given file.
             old_header_data = read_header_data(old_file)
