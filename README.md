@@ -1,7 +1,7 @@
 # sd-webui-adjust_lora_filename
 #### Extension for the AUTOMATIC1111 Web UI
 
-<p align="justify">sd-webui-adjust_lora_filename is an <i>Extension</i> for the <a href="https://github.com/AUTOMATIC1111/stable-diffusion-webui">AUTOMATIC1111</a> web UI.</p>
+<p align="justify">sd-webui-adjust_lora_filename is an <i>Extension</i> for the <a href="https://github.com/AUTOMATIC1111/stable-diffusion-webui">AUTOMATIC1111</a> web UI. The <i>Extension</i> adjusts file name to output name in the metadata.</p>
 
 ---
 
