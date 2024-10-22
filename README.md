@@ -5,6 +5,18 @@
 
 ---
 
+## Preface
+
+to-do ...
+
+# What the Extension Does
+
+to-do ...
+
 ## Know Problem
 
 <p align="justify">If a LoRA model is renamed on the harddisk, while AUTOMATIC1111 is running, old a new filename in the drop-down list. This has to be checked and corrected.</p>
+
+# Reference
+
+to-do ...
