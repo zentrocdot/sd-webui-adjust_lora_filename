@@ -1,13 +1,13 @@
 # sd-webui-adjust_lora_filename
 #### Extension for the AUTOMATIC1111 Web UI
 
-<p align="justify">sd-webui-adjust_lora_filename is an <i>Extension</i> for the <a href="https://github.com/AUTOMATIC1111/stable-diffusion-webui">AUTOMATIC1111</a> web UI. The <i>Extension</i> adjusts file name to output name in the metadata.</p>
+<p align="justify">sd-webui-adjust_lora_filename is an <i>Extension</i> for the <a href="https://github.com/AUTOMATIC1111/stable-diffusion-webui">AUTOMATIC1111</a> web UI. The <i>Extension</i> adjusts the file name to the output name in the metadata.</p>
 
 ---
 
 ## Preface
 
-<p align="justify">As I have already written at another place, there is a problem if the LoRA file name without extension is different from the output name in the LoRA file itself. The name in the expression in a Prompt can be different from the stored file name. That can be irritating. The task of this <i>Extension</i> is to eliminate the difference.</p>
+<p align="justify">As I have already written at another place, there is a problem if the LoRA file name without extension is different from the output name in the metadata of the LoRA file itself. The name in the LoRa calling expression in a <i>Prompt</i> can be different from the stored file name. This can be irritating while using a LoRA. The task of this <i>Extension</i> is to eliminate the difference or discrepancy between the file names.</p>
 
 ## Background
 
