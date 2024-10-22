@@ -9,6 +9,10 @@
 
 <p align="justify">As I have already written at another place, there is a problem if the LoRA file name without extension is different from the output name in the LoRA file itself. The name in the expression in a Prompt can be different from the stored file name. That can be irritating. The task of this <i>Extension</i> is to eliminate the difference.</p>
 
+## Background
+
+<p align="justify">A .safetensors files consist of a header and a binary part with the tensors. In the header there may be most of the time metadata. One tag of these metadata specifies the output filename. If the filename is not changed the output filename is equal to the filename.</p>
+
 ## What the Extension Does
 
 <p align="justify">One can select a LoRA file from a dropdown menu. Sorting is possible in alphabetical forward and backward direction. The selected filename without extension is shown in a textbox on the left side. The output filename from the metadata is shown in a textbox on the right side. In parallel the JSON data is shown in textbox underneath. After clicking the Adjust button, the <i>Extension</i> tries to change the metadata tag, which is responsible for the output filename. Afterwards one can check clicking on the Update button, if the operation was successful.</p>
