@@ -5,13 +5,15 @@
 
 ---
 
+## Presumptions
+
+<p align="justify">At the moment I am using the web UI <i>AUTOMATIC1111</i> [1] together with the <i>Extension</i> <i>TrainTrain</i> [3] for the LoRA modelling. The <i>Extension</i> in development should be compatible to the current <i>AUTOMATIC1111</i> version. It should work withe the LoRA models developed using <i>AUTOMATIC1111</i> and <i>TrainTrain</i> as well as LoRA models from other sources. The file type of the LoRA model must be in <code>.safetensors</code> format.</p>
+
 ## Preface
 
 <p align="justify">As I have already written at another places, there is a problem if the LoRA <i>file name</i> without extension is different from the <i>output name</i> in the <i>metadata</i> of the LoRA file itself. The labelling in the LoRA calling expression in a given <i>Prompt</i> can be different from the stored <i>file name</i> without extension. This can be irritating while using a LoRA model. The task of this <i>Extension</i> is to eliminate the difference or discrepancy between the file names.</p>
 
-## Presumptions
 
-<p align="justify">At the moment I am using the web UI <i>AUTOMATIC1111</i> [1] together with the <i>Extension</i> <i>TrainTrain</i> [3] for the LoRA modelling.</p>
 
 ## Usage of the LoRA Model
 
