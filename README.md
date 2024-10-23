@@ -13,11 +13,11 @@
 
 <p align="justify">As I have already written at another places, there is a problem if the LoRA <i>file name</i> without extension is different from the <i>output name</i> in the <i>metadata</i> of the LoRA file itself. The labelling in the LoRA calling expression in a given <i>Prompt</i> can be different from the stored <i>file name</i> without extension. This can be irritating while using a LoRA model. The task of this <i>Extension</i> is to eliminate the difference or discrepancy between the file names.</p>
 
-## Usage of a LoRA Model
+## Problem description
 
 ### Prompt and Activation Expression
 
-<p align="justify">I explain the earlier statement using a real live example. Let's say we are using the following <i>Prompt</i>:</p>
+<p align="justify">I explain the earlier statement about the LoRA behaviour using a real live example. Let's say we are using the following <i>Prompt</i>:</p>
 
 <pre>cat with hat, &lt;lora:FILE_NAME:WEIGHT&gt;</pre>
 
@@ -29,7 +29,7 @@
 
 ### Metadata and the Output Name Tag
 
-<p align="justify">Typically <i>metadata</i> pretty printed as JSON data looks like:</p>
+<p align="justify">Typical <i>metadata</i> in a slightly abbreviated form, pretty printed as JSON data, looks like this:</p>
 
 <pre>
 {
@@ -42,8 +42,7 @@
             "lighthouse": 12
         }
     },
-    "ss_network_module": "network.lora",
-    "ss_lr_warmup_steps": "0",
+    "ss_lr_warmup_steps": "250",
     "ss_min_snr_gamma": "5.0",
     "ss_lr_scheduler": "cosine",
     "ss_lr_scheduler_power": "1.0",
