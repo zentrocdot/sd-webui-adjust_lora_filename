@@ -25,7 +25,7 @@ Normally FILENAME is the file name of the file stored on the hard disc or wherev
 
 Typically metadata printed as JSON looks like
 
-<pre
+<pre>
 {
     "ss_base_model_version": "sd_v1",
     "ss_training_started_at": "1726639674.9215708",
