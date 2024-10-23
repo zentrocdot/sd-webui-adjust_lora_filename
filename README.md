@@ -7,7 +7,8 @@
 
 ## Presumptions
 
-<p align="justify">At the moment I am using the web UI <i>AUTOMATIC1111</i> [1] together with the <i>Extension</i> <i>TrainTrain</i> [3] for the LoRA modelling. The <i>Extension</i> in development should be compatible to the current <i>AUTOMATIC1111</i> version. It should work with the LoRA models developed using <i>AUTOMATIC1111</i> and <i>TrainTrain</i> as well as LoRA models from other sources. The file type of the LoRA model must be in <code>.safetensors</code> format. The metadata should not be modified in general except for the incorrect data.</p>
+
+<p align="justify">At the moment I am using the <i>AUTOMATIC1111</i> web UI [1] together with the <i>Extension</i> <i>TrainTrain</i> [3] for the LoRA modelling. The <i>Extension</i> currently under development should be compatible with the current <i>AUTOMATIC1111</i> version. It should work with the LoRA models developed with <i>AUTOMATIC1111</i> and <i>TrainTrain</i> as well as with LoRA models from other sources. The file type of the LoRA model must be in <code>.safetensors</code> format. The metadata should generally not be changed, with the exception of incorrect data.</p>
 
 ## Preface
 
@@ -89,6 +90,24 @@ https://github.com/zentrocdot/sd-webui-adjust_lora_filename
 ## Spin Off
 
 <p align="justify">I need a extension where I can modify the maximal training steps. At the moment I am performing more training steps then I am using at the end in the final version of the LoRA model. So there will be a mismatch of maximal training steps to the really used training steps.</p>
+
+## Development and Test Environment
+
+<p align="justify">The Extension was devolped and tested on a machine with a Debian based Linux distribution istalled using the web UI AUTOMATIC111 with following specification:</p>
+
++ API: v1.10.0
++ Python: 3.10.14
++ torch: 2.1.2+cu121
++ xformers: 0.0.23.post1
++ gradio: 3.41.2
+
+## Points of Criticism AUTOMATIC1111
+
+<p align="justify">AUTOMATIC1111 uses Gradio to programme the web interface. The Gradio version used is extremely buggy and outdated. Currently my local installed version is 5.0.1, AUTOMATIC1111 is using version 3.41.2. In forum posts can be read that the outdated Gradio version is given priority over an adaptation or update. This does not really motivates to programme extensions.</p>
+
+<p align="justify">Even in the Python Virtual Environment, which AUTOMATIC1111 is using, the subsequent installation of Python modules is not unproblematic. There is often a mismatch in versions and dependencies. It must be clarified on a case-by-case basis how problematic the corresponding warning or error messages are. So far I have been able to solve every problem that has arisen.</p>
+
+<p align="justify">I am still looking for good documentation on how to integrate custom Extensions into AUTOMATIC1111. So far I have to resort to analysing other extensions and also having a look at Automatic's code. This is a very unsatisfactory approach.</p>
 
 # Reference
 
