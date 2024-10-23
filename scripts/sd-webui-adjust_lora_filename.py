@@ -1,8 +1,9 @@
 #!/usr/bin/python3
 '''sd-webui-adjust_lora_filename
+
 Extension for AUTOMATIC1111.
 
-Version 0.0.0.2
+Version 0.0.0.3
 '''
 # pylint: disable=invalid-name
 # pylint: disable=import-error
@@ -31,8 +32,8 @@ from modules import script_callbacks
 # Get LoRA path.
 LORA_PATH = getattr(modules.shared.cmd_opts, "lora_dir", os.path.join(models.paths.models_path, "Lora"))
 
-# Create a global dictionary.
-lora_dict = {}
+# Create a private global dictionary.
+_lora_dict = {}
 
 # Set private variable.
 _SortDir = False
@@ -42,14 +43,14 @@ _SortDir = False
 # ********************
 def lora_scan(lora_dir: str, ext: list) -> (list, list):
     '''File scan for LoRA models.'''
-    global lora_dict
+    global _lora_dict
     subdirs, files = [], []
     for fn in os.scandir(lora_dir):
         if fn.is_dir():
             subdirs.append(fn.path)
         if fn.is_file():
             if os.path.splitext(fn.name)[1].lower() in ext:
-                lora_dict[fn.name] = fn.path
+                _lora_dict[fn.name] = fn.path
     for dirs in list(subdirs):
         sd, fn = lora_scan(dirs, ext)
         subdirs.extend(sd)
@@ -61,11 +62,11 @@ def lora_scan(lora_dir: str, ext: list) -> (list, list):
 # ************************
 def get_lora_list() -> list:
     '''Simple function for use with components.'''
-    global lora_dict
-    lora_dict = {}
+    global _lora_dict
+    _lora_dict = {}
     lora_list = []
     lora_scan(LORA_PATH, [".safetensors"])
-    lora_list = list(lora_dict.keys())
+    lora_list = list(_lora_dict.keys())
     lora_list.sort(reverse=_SortDir)
     return lora_list
 
@@ -106,9 +107,9 @@ def read_metadata(file_name: str) -> dict:
             return type(json.loads(value))
         except:
             pass
-    # Create an empty dict.
+    # Create an empty dictionary.
     metadata = {}
-    # Open binary file for radonly reading.
+    # Open binary file for readonly reading.
     with open(file_name, 'rb') as file:
         # Get the header data from the file.
         header_data = read_header_data(file)
@@ -216,7 +217,7 @@ def on_ui_tabs():
     def get_file_tag_name(fn):
         tag = "ss_output_name"
         basename = Path(fn).stem
-        fp = lora_dict.get(fn)
+        fp = _lora_dict.get(fn)
         metadata = read_metadata(fp)
         outputname = metadata.get(tag)
         return [basename, outputname]
@@ -254,7 +255,7 @@ def on_ui_tabs():
                              outputs=[filename, outputname])
             def adjust_safetensors(src):
                 tag = Path(src).stem
-                src_path = lora_dict.get(src)
+                src_path = _lora_dict.get(src)
                 dst_path = ''.join([src_path, ".bak"])
                 shutil.copyfile(src_path, dst_path)
                 change_tag(dst_path, src_path, tag)
@@ -299,7 +300,7 @@ def get_lora_path(lora_file: str) -> str:
 # +++++++++++++++++++++++++++++
 def read_lora_metadata(input_file: str) -> json:
     '''Read the LoRA metadata.'''
-    if selected_model := get_lora_path(lora_dict.get(input_file)):
+    if selected_model := get_lora_path(_lora_dict.get(input_file)):
         if metadata := models.read_metadata_from_safetensors(selected_model):
             return json.dumps(metadata, indent=4, ensure_ascii=False)
         return "No metadata"
