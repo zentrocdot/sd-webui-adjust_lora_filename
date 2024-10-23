@@ -80,7 +80,7 @@ https://github.com/zentrocdot/sd-webui-adjust_lora_filename
 
 ## Spin Off
 
-I need a extension where I can modify the max training steps. At the moment  i am performing mor training steps then I am using at the end. So there will be a mismatch of max training steps to the used training steps.
+<p align="justify">I need a extension where I can modify the maximal training steps. At the moment I am performing more training steps then I am using at the end in the final version of the LoRA model. So there will be a mismatch of maximal training steps to the really used training steps.</p>
 
 # Reference
 
