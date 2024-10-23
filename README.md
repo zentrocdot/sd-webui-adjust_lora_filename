@@ -1,13 +1,13 @@
 # sd-webui-adjust_lora_filename
 #### :arrow_right: Extension for the AUTOMATIC1111 Web UI
 
-<p align="justify"><b>sd-webui-adjust_lora_filename</b> is an <i>Extension</i> for the <a href="https://github.com/AUTOMATIC1111/stable-diffusion-webui">AUTOMATIC1111</a> web UI. The <i>Extension</i> adjusts the <i>file name</i> to the <i>output name</i> in the <i>metadata</i> in a <i>LoRA</i> model file.</p>
+<p align="justify"><b>sd-webui-adjust_lora_filename</b> is an <i>Extension</i> for the <a href="https://github.com/AUTOMATIC1111/stable-diffusion-webui">AUTOMATIC1111</a> web UI. The <i>Extension</i> adjusts the <i>file name</i> to the <i>output name</i> in the <i>metadata</i> in a LoRA model file.</p>
 
 ---
 
 ## Preface
 
-<p align="justify">As I have already written at another places, there is a problem if the <i>LoRA</i> <i>file name</i> without extension is different from the <i>output name</i> in the <i>metadata</i> of the <i>LoRA</i>i> file itself. The labelling in the <i>LoRa</i> calling expression in a given <i>Prompt</i> can be different from the stored <i>file name</i> without extension. This can be irritating while using a LoRA model. The task of this <i>Extension</i> is to eliminate the difference or discrepancy between the file names.</p>
+<p align="justify">As I have already written at another places, there is a problem if the <i>LoRA</i> <i>file name</i> without extension is different from the <i>output name</i> in the <i>metadata</i> of the LoRA file itself. The labelling in the LoRA calling expression in a given <i>Prompt</i> can be different from the stored <i>file name</i> without extension. This can be irritating while using a LoRA model. The task of this <i>Extension</i> is to eliminate the difference or discrepancy between the file names.</p>
 
 ## Presumptions
 
