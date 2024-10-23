@@ -9,6 +9,10 @@
 
 <p align="justify">As I have already written at another places, there is a problem if the LoRA <i>file name</i> without extension is different from the <i>output name</i> in the <i>metadata</i> of the LoRA file itself. The labelling in the LoRa calling expression in a given <i>Prompt</i> can be different from the stored <i>file name</i> without extension. This can be irritating while using a LoRA model. The task of this <i>Extension</i> is to eliminate the difference or discrepancy between the file names.</p>
 
+## Presumptions
+
+<p align="justify">At the moment I am using the web UI <i>AUTOMATIC1111</i> [1] together with the <i>Extension</i> <i>TrainTrain</i> [3] for the LoRA modelling.</p>
+
 ## Usage of the LoRA Model
 
 I explain the former statement using a real live example. Let's say we use following Prompt.
@@ -46,6 +50,8 @@ https://github.com/zentrocdot/sd-webui-adjust_lora_filename
 [1] https://github.com/AUTOMATIC1111/stable-diffusion-webui
 
 [2] https://github.com/AUTOMATIC1111/stable-diffusion-webui/wiki/Extensions
+
+[3] https://github.com/hako-mikan/sd-webui-traintrain
 
 <hr width="100%" size="2">
 
