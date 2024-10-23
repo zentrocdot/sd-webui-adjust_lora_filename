@@ -11,9 +11,13 @@
 
 ## Usage of the LoRA Model
 
-<code>
-  cat with hat, &lt;lora:FILENAME:WEIGHT&gt;
-</code>
+I explain the former statement using a real live example. Let's say we use following Prompt.
+
+<pre>fantasy image, &lt;lora:FILE_NAME:WEIGHT&gt;</pre>
+
+Normally FILENAME is the file name of the file stored on the hard disc or wherever the file may be located. If the output name in the meta data is differnet, selecting a LoRa leads to the following.
+
+<pre>fantasy image, &lt;lora:OUTPUT_NAME:WEIGHT&gt;</pre>
 
 ## Background
 
