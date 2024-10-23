@@ -78,6 +78,10 @@ https://github.com/zentrocdot/sd-webui-adjust_lora_filename
 
 <p align="justify">No problems known yet.</p>
 
+## Spin Off
+
+I need a extension where I can modify the max training steps. At the moment  i am performing mor training steps then I am using at the end. So there will be a mismatch of max training steps to the used training steps.
+
 # Reference
 
 [1] https://github.com/AUTOMATIC1111/stable-diffusion-webui
