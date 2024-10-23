@@ -15,13 +15,15 @@
 
 ## Usage of the LoRA Model
 
-I explain the former statement using a real live example. Let's say we use following Prompt.
+<p align="justify">I explain the former statement using a real live example. Let's say we use following <i>Prompt</i>.</p>
 
-<pre>fantasy image, &lt;lora:FILE_NAME:WEIGHT&gt;</pre>
+<pre>cat with hat, &lt;lora:FILE_NAME:WEIGHT&gt;</pre>
 
-Normally FILENAME is the file name of the file stored on the hard disc or wherever the file may be located. If the output name in the meta data is differnet, selecting a LoRa leads to the following.
+Normally FILE_NAME is the file name without extension of the file stored on the hard disc or wherever the file may be located. If the output name in the metadata is differnet, selecting a LoRA in AUTOMATIC1111 leads to the following <i>Prompt</i>.
 
-<pre>fantasy image, &lt;lora:OUTPUT_NAME:WEIGHT&gt;</pre>
+<pre>cat with hat, &lt;lora:OUTPUT_NAME:WEIGHT&gt;</pre>
+
+<p align="justify">If someone is using a lot of LoRA models this behaviour will be confusing.</p>
 
 Typically metadata printed as JSON looks like
 
