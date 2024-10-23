@@ -23,6 +23,37 @@ Normally FILENAME is the file name of the file stored on the hard disc or wherev
 
 <pre>fantasy image, &lt;lora:OUTPUT_NAME:WEIGHT&gt;</pre>
 
+Typically metadata printed as JSON looks like
+
+<pre
+{
+    "ss_base_model_version": "sd_v1",
+    "ss_training_started_at": "1726639674.9215708",
+    "ss_output_name": "LighthouseConceptLora",
+    "ss_optimizer": "adamw",
+    "ss_network_dim": "16",
+    "ss_tag_frequency": {
+        "1": {
+            "lighthouse": 12
+        }
+    },
+    "ss_network_module": "network.lora",
+    "ss_seed": "1455287774",
+    "ss_lr_warmup_steps": "0",
+    "ss_lr_step_rules": "",
+    "ss_min_snr_gamma": "5.0",
+    "ss_lr_scheduler": "cosine",
+    "ss_session_id": "3495676067",
+    "ss_lr_scheduler_power": "1.0",
+    "ss_network_alpha": "8",
+    "ss_mixed_precision": "torch.float32",
+    "ss_learning_rate": "0.0001",
+    "ss_max_train_steps": "1000",
+    "ss_lr_scheduler_num_cycles": "1",
+    "ss_v2": "False"
+}
+</pre>  
+
 ## Background
 
 <p align="justify">A <code>.safetensors</code> files consist of a <i>header</i> and a binary part with the tensors. In the <i>header</i> there may be most of the time <i>metadata</i>. One tag of these <i>metadata</i> specifies the output name. If the filename is not changed the output filename is equal to the filename.</p>
