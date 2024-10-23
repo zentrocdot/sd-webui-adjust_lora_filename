@@ -77,7 +77,9 @@
 
 ## Installation
 
-The installation link is
+<p align="justify">Go to the tab <code>Extensions</code>. Then go to the tab <code>Install from URL</code>.</p> 
+    
+<p align="justify">The installation link is</p>
 
 ```
 https://github.com/zentrocdot/sd-webui-adjust_lora_filename
@@ -101,9 +103,9 @@ https://github.com/zentrocdot/sd-webui-adjust_lora_filename
 + xformers: 0.0.23.post1
 + gradio: 3.41.2
 
-## Points of Criticism AUTOMATIC1111
+## Critical Points AUTOMATIC1111
 
-<p align="justify"><i>AUTOMATIC1111</i> uses <i>Gradio</i> to programme the web user interface. <i>The Gradio</i> version used is extremely buggy and outdated. Currently my local installed version is 5.0.1, <i>AUTOMATIC1111</i> is using version 3.41.2. In forum posts can be read that the outdated Gradio version is given priority over an adaptation or update. This does not really motivates to programme extensions.</p>
+<p align="justify"><i>AUTOMATIC1111</i> uses <i>Gradio</i> to programme the web user interface. <i>The Gradio</i> version used is extremely buggy and outdated. Currently my local installed version is 5.0.1, <i>AUTOMATIC1111</i> is using version 3.41.2. Following some forum posts the outdated <i>Gradio</i> version is given priority over an adaptation or update. This does not really motivates to programme extensions.</p>
 
 <p align="justify">Even in the Python Virtual Environment, which <i>AUTOMATIC1111</i> is using, the subsequent installation of Python modules is not unproblematic. There is often a mismatch in versions and dependencies. It must be clarified on a case-by-case basis how problematic the corresponding warning or error messages are. So far I have been able to solve every problem that has arisen.</p>
 
