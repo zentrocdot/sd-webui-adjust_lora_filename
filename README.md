@@ -12,7 +12,7 @@
 ## Usage of the LoRA Model
 
 <code>
-  cat with hat, <lora:FILENAME:WEIGHT>
+  cat with hat, \<lora:FILENAME:WEIGHT\>
 </code>
 
 ## Background
