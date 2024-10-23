@@ -7,8 +7,7 @@
 
 ## Presumptions
 
-
-<p align="justify">At the moment I am using the <i>AUTOMATIC1111</i> web UI [1] together with the <i>Extension</i> <i>TrainTrain</i> [3] for the LoRA modelling. The <i>Extension</i> currently under development should be compatible with the current <i>AUTOMATIC1111</i> version. It should work with the LoRA models developed with <i>AUTOMATIC1111</i> and <i>TrainTrain</i> as well as with LoRA models from other sources. The file type of the LoRA model must be in <code>.safetensors</code> format. The metadata should generally not be changed, with the exception of incorrect data.</p>
+<p align="justify">At the moment I am using the <i>AUTOMATIC1111</i> web UI [1] together with the <i>Extension</i> <i>TrainTrain</i> [3] for the LoRA modelling. The <i>Extension</i> currently under development should be compatible with the current <i>AUTOMATIC1111</i> version. It should work with the LoRA models developed with <i>AUTOMATIC1111</i> and <i>TrainTrain</i> as well as with LoRA models from other sources. The file type of the LoRA model must be in <code>.safetensors</code> format. The <i>metadata</i> should generally not be changed, with the exception of incorrect data.</p>
 
 ## Preface
 
