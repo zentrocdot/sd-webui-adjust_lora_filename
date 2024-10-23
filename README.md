@@ -13,9 +13,7 @@
 
 <p align="justify">As I have already written at another places, there is a problem if the LoRA <i>file name</i> without extension is different from the <i>output name</i> in the <i>metadata</i> of the LoRA file itself. The labelling in the LoRA calling expression in a given <i>Prompt</i> can be different from the stored <i>file name</i> without extension. This can be irritating while using a LoRA model. The task of this <i>Extension</i> is to eliminate the difference or discrepancy between the file names.</p>
 
-
-
-## Usage of the LoRA Model
+## Usage of a LoRA Model
 
 <p align="justify">I explain the former statement using a real live example. Let's say we use following <i>Prompt</i>.</p>
 
