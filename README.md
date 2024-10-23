@@ -15,21 +15,21 @@
 
 ## Usage of a LoRA Model
 
-### Prompt
+### Prompt and Activation Expression
 
-<p align="justify">I explain the earlier statement using a real live example. Let's say we use following <i>Prompt</i>.</p>
+<p align="justify">I explain the earlier statement using a real live example. Let's say we are using the following <i>Prompt</i>:</p>
 
 <pre>cat with hat, &lt;lora:FILE_NAME:WEIGHT&gt;</pre>
 
-<p align="justify">Normally FILE_NAME is the file name without extension of the file stored on the hard disc or wherever the file may be located. Selecting a LoRA in <i>AUTOMATIC1111</i> leads to the following <i>Prompt</i> if the <i>output name</i> in the <i>metadata</i> is different to the stored file name.</p>
+<p align="justify">Normally FILE_NAME is the file name without extension of the file stored on the hard disc or on whatever storage media the file may be located. Selecting a LoRA in <i>AUTOMATIC1111</i> leads to the following <i>Prompt</i> if the <i>output name</i> in the <i>metadata</i> is different to the stored file name.</p>
 
 <pre>cat with hat, &lt;lora:OUTPUT_NAME:WEIGHT&gt;</pre>
 
-<p align="justify">If someone is using a lot of LoRA models this behaviour will be confusing.</p>
+<p align="justify">If someone is using a lot of LoRA models this behaviour will be really confusing.</p>
 
-### Metadata
+### Metadata and the Output Name Tag
 
-<p align="justify">Typically <i>metadata</i> printed as JSON data looks like</p>
+<p align="justify">Typically <i>metadata</i> pretty printed as JSON data looks like:</p>
 
 <pre>
 {
@@ -44,7 +44,6 @@
     },
     "ss_network_module": "network.lora",
     "ss_lr_warmup_steps": "0",
-    "ss_lr_step_rules": "",
     "ss_min_snr_gamma": "5.0",
     "ss_lr_scheduler": "cosine",
     "ss_lr_scheduler_power": "1.0",
@@ -58,9 +57,9 @@
 
 <p align="justify">The tag <code>ss_output_name</code> in the JSON data contains the 'file name/output name'.</p>
 
-<p align="justify">If I would rename <code>lighthouseconceptlora.safetensors</code> on the harddisk to <code>lighthouseconcept.safetensors</code> on the hard disc in the LoRA model subdirectory, then it happens what I described above. Then there will be a mismatch between <i>lighthouseconceptlora</i> and <i>lighthouseconcept</i>.</p>
+<p align="justify">If one would rename <code>LighthouseConceptLora.safetensors</code> on the hard disc to <code>lighthouseconcept.safetensors</code> on the hard disc in the LoRA model subdirectory, then it happens what was described above. Then there will be a mismatch between <i>LighthouseConceptLora</i> and <i>lighthouseconcept</i>.</p>
 
-## Background
+## Technical Background
 
 <p align="justify">A <code>.safetensors</code> files consist of a <i>header</i> and a binary part with the tensors. In the <i>header</i> there may be most of the time <i>metadata</i>. One tag of these <i>metadata</i> specifies the output name. If the filename is not changed the output filename is equal to the filename.</p>
 
