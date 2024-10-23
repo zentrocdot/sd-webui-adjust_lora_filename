@@ -11,9 +11,9 @@
 
 ## Usage of the LoRA Model
 
-<pre>
-  cat with hat, \<lora:FILENAME:WEIGHT\>
-</pre>
+<code>
+  cat with hat, <lora:FILENAME:WEIGHT>
+</code>
 
 ## Background
 
