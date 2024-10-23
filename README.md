@@ -15,17 +15,21 @@
 
 ## Usage of a LoRA Model
 
+### Prompt
+
 <p align="justify">I explain the earlier statement using a real live example. Let's say we use following <i>Prompt</i>.</p>
 
 <pre>cat with hat, &lt;lora:FILE_NAME:WEIGHT&gt;</pre>
 
-Normally FILE_NAME is the file name without extension of the file stored on the hard disc or wherever the file may be located. If the output name in the metadata is differnet, selecting a LoRA in AUTOMATIC1111 leads to the following <i>Prompt</i>.
+<p align="justify">Normally FILE_NAME is the file name without extension of the file stored on the hard disc or wherever the file may be located. Selecting a LoRA in <i>AUTOMATIC1111</i> leads to the following <i>Prompt</i> if the <i>output name</i> in the <i>metadata</i> is different to the stored file name.</p>
 
 <pre>cat with hat, &lt;lora:OUTPUT_NAME:WEIGHT&gt;</pre>
 
 <p align="justify">If someone is using a lot of LoRA models this behaviour will be confusing.</p>
 
-Typically metadata printed as JSON looks like
+### Metadata
+
+<p align="justify">Typically metadata printed as JSON looks like</p>
 
 <pre>
 {
@@ -56,7 +60,9 @@ Typically metadata printed as JSON looks like
 }
 </pre>  
 
-If I would rename lighthouseconceptlora.safetensors on the harddisk to lighthouseconcept.safetensors on the harddisk in the LoRA model subdirectory, then it happens what I described above. Then there will be a mismatch between lighthouseconceptlora and lighthouseconcept.
+<p align="justify">The tag <code>ss_output_name</code> in the JSON data contains the 'file name/output name'.</p>
+
+<p align="justify">If I would rename lighthouseconceptlora.safetensors on the harddisk to lighthouseconcept.safetensors on the harddisk in the LoRA model subdirectory, then it happens what I described above. Then there will be a mismatch between lighthouseconceptlora and lighthouseconcept.</p>
 
 ## Background
 
