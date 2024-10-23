@@ -15,7 +15,7 @@
 
 ## Usage of a LoRA Model
 
-<p align="justify">I explain the former statement using a real live example. Let's say we use following <i>Prompt</i>.</p>
+<p align="justify">I explain the earlier statement using a real live example. Let's say we use following <i>Prompt</i>.</p>
 
 <pre>cat with hat, &lt;lora:FILE_NAME:WEIGHT&gt;</pre>
 
