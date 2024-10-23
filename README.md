@@ -29,7 +29,7 @@
 
 ### Metadata
 
-<p align="justify">Typically metadata printed as JSON looks like</p>
+<p align="justify">Typically <i>metadata</i> printed as JSON data looks like</p>
 
 <pre>
 {
@@ -62,7 +62,7 @@
 
 <p align="justify">The tag <code>ss_output_name</code> in the JSON data contains the 'file name/output name'.</p>
 
-<p align="justify">If I would rename lighthouseconceptlora.safetensors on the harddisk to lighthouseconcept.safetensors on the harddisk in the LoRA model subdirectory, then it happens what I described above. Then there will be a mismatch between lighthouseconceptlora and lighthouseconcept.</p>
+<p align="justify">If I would rename <code>lighthouseconceptlora.safetensors</code> on the harddisk to <code>lighthouseconcept.safetensors</code> on the hard disc in the LoRA model subdirectory, then it happens what I described above. Then there will be a mismatch between <i>lighthouseconceptlora</i> and <i>lighthouseconcept</i>.</p>
 
 ## Background
 
