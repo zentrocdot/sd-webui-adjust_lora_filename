@@ -103,11 +103,11 @@ https://github.com/zentrocdot/sd-webui-adjust_lora_filename
 
 ## Points of Criticism AUTOMATIC1111
 
-<p align="justify">AUTOMATIC1111 uses Gradio to programme the web interface. The Gradio version used is extremely buggy and outdated. Currently my local installed version is 5.0.1, AUTOMATIC1111 is using version 3.41.2. In forum posts can be read that the outdated Gradio version is given priority over an adaptation or update. This does not really motivates to programme extensions.</p>
+<p align="justify"><i>AUTOMATIC1111</i> uses <i>Gradio</i> to programme the web user interface. <i>The Gradio</i> version used is extremely buggy and outdated. Currently my local installed version is 5.0.1, <i>AUTOMATIC1111</i> is using version 3.41.2. In forum posts can be read that the outdated Gradio version is given priority over an adaptation or update. This does not really motivates to programme extensions.</p>
 
-<p align="justify">Even in the Python Virtual Environment, which AUTOMATIC1111 is using, the subsequent installation of Python modules is not unproblematic. There is often a mismatch in versions and dependencies. It must be clarified on a case-by-case basis how problematic the corresponding warning or error messages are. So far I have been able to solve every problem that has arisen.</p>
+<p align="justify">Even in the Python Virtual Environment, which <i>AUTOMATIC1111</i> is using, the subsequent installation of Python modules is not unproblematic. There is often a mismatch in versions and dependencies. It must be clarified on a case-by-case basis how problematic the corresponding warning or error messages are. So far I have been able to solve every problem that has arisen.</p>
 
-<p align="justify">I am still looking for good documentation on how to integrate custom Extensions into AUTOMATIC1111. So far I have to resort to analysing other extensions and also having a look at Automatic's code. This is a very unsatisfactory approach.</p>
+<p align="justify">I am still looking for a good documentation on how to integrate custom <i>Extensions</i> into <i>AUTOMATIC1111</i>. So far I have to resort to analysing other extensions and also having a look at the code of <i>AUTOMATIC1111</i>. This is a very unsatisfactory approach.</p>
 
 # Reference
 
